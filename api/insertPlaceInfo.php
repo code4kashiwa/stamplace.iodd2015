@@ -4,7 +4,7 @@
 //require_once('/home/code4kashiwa/www/stamplace/module/ApiModule.php');
 require_once('../module/ApiModule.php');
 
-// デバッグモード
+// デバッグモード です
 if(DEBUGMODE)
 {
 	ini_set("display_errors", "On");
