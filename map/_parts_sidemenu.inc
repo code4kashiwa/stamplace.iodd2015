@@ -18,16 +18,17 @@
         </li>
       </ul>
     </li>
-<!--
-    <li><a href="#">アクション</a>
+
+    <li><a href="#">フィルター</a>
       <ul>
-        <li><a href="http:/www.google.com/">再読み込み</a></li>
-        <li><a href="http:/www.google.com/">位置登録</a></li>
-        <li><a href="http:/www.google.com/">キーワード検索</a></li>
-        <li><a href="http:/www.google.com/">お問い合わせ</a></li>
+        <li><input type="checkbox" name="出生前">出生前</li>
+        <li><input type="checkbox" name="0才">0才</a></li>
+        <li><input type="checkbox" name="1~3才">1~3才</a></li>
+        <li><input type="checkbox" name="4~5才">4~5才</a></li>
       </ul>
     </li>
--->
+
+
     <li><a href="#">リンク</a>
       <ul>
         <li><a href="http://www.code4kashiwa.org/" target="_blank">Code for KASHIWA</a></li>
