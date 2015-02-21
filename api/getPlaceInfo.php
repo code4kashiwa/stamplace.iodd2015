@@ -27,7 +27,7 @@ class getPlaceInfoModule
 /*
  *  API制御処理
  */
-	function execute($type)
+	function execute()
 	{
 		$this->api->logWrite(SP_LOG_INFO, "getPlaceInfoModule Start");
 
@@ -37,9 +37,9 @@ class getPlaceInfoModule
 			// APIキー認証
 			$this->api->isAuthApiKey();
 			// 位置リスト取得
-			//$place = $this->getPlaceSql($type);
+			$place = $this->getPlaceSql($this->api->params);
 			// ステータス設定
-			//$result = $this->api->makeSuccessResponse($place);
+			$result = $this->api->makeSuccessResponse($place);
 		}
 		catch (BaseModuleException $e)
 		{
@@ -57,9 +57,6 @@ class getPlaceInfoModule
  */
 	function getPlaceSql($params = null)
 	{
-
-		var_dump($params);
-
 		// 抽出条件の設定
 // *** 条件を追加する時は、ここに項目を追加して下さい
 		$colArray = array(
@@ -77,8 +74,26 @@ class getPlaceInfoModule
 		$sqlStr .= ", " . $this->api->getViewStatus();	// 表示ステータス
 		$sqlStr .= " FROM place p";
 		$sqlStr .= " LEFT JOIN place_advance pa ON p.place_id = pa.place_id";
+		$sqlStr .= " LEFT OUTER JOIN place_extension pe ON p.place_id = pe.place_id";
+		$sqlStr .= " WHERE p.status > 0";
+		if(array_key_exists("type0", $params) ) {
+			$colArray[] = $params["type0"];
+			$sqlStr .= " AND pe.type0 = ?";
+		}
+		if(array_key_exists("type1", $params) ) {
+			$colArray[] = $params["type1"];
+			$sqlStr .= " AND pe.type1 = ?";
+		}
+		if(array_key_exists("type2", $params) ) {
+			$colArray[] = $params["type2"];
+			$sqlStr .= " AND pe.type2 = ?";
+		}
+		if(array_key_exists("type3", $params) ) {
+			$colArray[] = $params["type3"];
+			$sqlStr .= " AND pe.type3 = ?";
+		}
 
-		//$result = $this->api->getSelectData($sqlStr);
+		$result = $this->api->getSelectData($sqlStr);
 
 		return $result;
 	}
@@ -91,19 +106,8 @@ class getPlaceInfoModule
 	}
 }
 
-$type = array();
-
-$type["type0"] = intval($_POST['type0']);
-$type["type1"] = intval($_POST['type1']);
-$type["type2"] = intval($_POST['type2']);
-$type["type3"] = intval($_POST['type3']);
-
-
-
-$apiKey = $_POST['apikey'];
-
 $module = new getPlaceInfoModule();
-$module->execute($type);
+$module->execute();
 header($module->api->apiHeaderInfo);
 print $module->api->apiBodyInfo;
 ?>
