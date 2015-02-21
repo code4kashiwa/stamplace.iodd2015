@@ -10,7 +10,7 @@ mb_internal_encoding("utf-8"); //内部文字コードを変更
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<link rel="shortcut icon" href="./img/fav.png" >
-		<title>StamPlace - 赤ちゃんほっとステーション | IODD2015</title>
+		<title><?php print APP_TITLE; ?> - Powered by StamPlace</title>
 		<!-- CSS -->
 		<link rel="stylesheet" href="./css/style.css">
 		<link rel="stylesheet" href="./css/jquery.pageslide.css">

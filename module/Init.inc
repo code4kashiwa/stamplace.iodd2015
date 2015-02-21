@@ -36,10 +36,11 @@ define("STATUS_NG", 1);				   	// NG（レスポンスステータス）
 define("RES_ERROR", "error");			   	// エラー情報
 define("RES_DATA", "data");			   	// 出力データ
 
-// 表示ステータス情報
+// 表示設定
 define("VIEW_NG", 0);			 	  	// 表示NG（仮登録）
 define("VIEW_OK", 1);				   	// 表示OK
 define("VIEW_INIT", VIEW_OK);			  	// マップ上からの登録時に設定されるステータス
+define("APP_TITLE", "赤ちゃんほっとスペース | IODD2015");	// サイトタイトル
 
 // ログ関連設定
 define("LOG_PATH", "/home/code4kashiwa/log/iodd2015_api_log.#NOWDATE#.log");	// ログファイル格納場所

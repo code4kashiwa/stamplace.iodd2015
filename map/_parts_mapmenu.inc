@@ -3,7 +3,7 @@
 	<div id="map_menu_under" class="menu_layout_under"></div>
 	<div id="map_menu_over" class="menu_layout_over">
 		<div id="map_menu_left">
-			<div id="site_title" class="map_menu_left_title">サイト名：柏＆流山&nbsp;赤ちゃんほっとステーション IODD2015</div>
+			<div id="site_title" class="map_menu_left_title">サイト名：<?php print APP_TITLE; ?></div>
 		</div>
 		<div id="map_menu_right">
 			<a class="map_menu_right_insert" href="javascript:getGPS();">現在位置に移動</a>

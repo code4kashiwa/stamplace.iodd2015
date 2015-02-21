@@ -63,14 +63,14 @@ class getPlaceInfoModule
 //			$params[PLACE_ID]
 		);
 		// SQL文の編集
-		$sqlStr  = "SELECT p.place_id";		// 場所ID
-		$sqlStr .= ", p.lat";							// 緯度
-		$sqlStr .= ", p.lng";							// 緯度
+		$sqlStr  = "SELECT p.place_id";			// 場所ID
+		$sqlStr .= ", p.lat";				// 緯度
+		$sqlStr .= ", p.lng";				// 緯度
 		$sqlStr .= ", p.place_name";			// 場所の名称
-		$sqlStr .= ", p.zip";							// 郵便番号
-		$sqlStr .= ", p.address";					// 住所
-		$sqlStr .= ", p.tel";							// 電話番号
-		$sqlStr .= ", p.status";					// レコードステータス
+		$sqlStr .= ", p.zip";				// 郵便番号
+		$sqlStr .= ", p.address";			// 住所
+		$sqlStr .= ", p.tel";				// 電話番号
+		$sqlStr .= ", p.status";			// レコードステータス
 		$sqlStr .= ", " . $this->api->getViewStatus();	// 表示ステータス
 		$sqlStr .= " FROM place p";
 		$sqlStr .= " LEFT JOIN place_advance pa ON p.place_id = pa.place_id";
