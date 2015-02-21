@@ -74,24 +74,6 @@ class getPlaceInfoModule
 		$sqlStr .= ", " . $this->api->getViewStatus();	// 表示ステータス
 		$sqlStr .= " FROM place p";
 		$sqlStr .= " LEFT JOIN place_advance pa ON p.place_id = pa.place_id";
-		$sqlStr .= " LEFT OUTER JOIN place_extension pe ON p.place_id = pe.place_id";
-		$sqlStr .= " WHERE p.status > 0";
-		if(array_key_exists("type0", $params) ) {
-			$colArray[] = $params["type0"];
-			$sqlStr .= " AND pe.type0 = ?";
-		}
-		if(array_key_exists("type1", $params) ) {
-			$colArray[] = $params["type1"];
-			$sqlStr .= " AND pe.type1 = ?";
-		}
-		if(array_key_exists("type2", $params) ) {
-			$colArray[] = $params["type2"];
-			$sqlStr .= " AND pe.type2 = ?";
-		}
-		if(array_key_exists("type3", $params) ) {
-			$colArray[] = $params["type3"];
-			$sqlStr .= " AND pe.type3 = ?";
-		}
 
 		$result = $this->api->getSelectData($sqlStr);
 
