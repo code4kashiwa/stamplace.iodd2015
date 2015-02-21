@@ -1,4 +1,6 @@
 <?php
+require_once('../module/Init.inc');
+
 mb_language("Japanese");
 mb_internal_encoding("utf-8"); //内部文字コードを変更
 
