@@ -27,7 +27,7 @@ class getPlaceInfoModule
 /*
  *  API制御処理
  */
-	function execute()
+	function execute($type)
 	{
 		$this->api->logWrite(SP_LOG_INFO, "getPlaceInfoModule Start");
 
@@ -37,9 +37,9 @@ class getPlaceInfoModule
 			// APIキー認証
 			$this->api->isAuthApiKey();
 			// 位置リスト取得
-			$place = $this->getPlaceSql($this->api->params);
+			//$place = $this->getPlaceSql($type);
 			// ステータス設定
-			$result = $this->api->makeSuccessResponse($place);
+			//$result = $this->api->makeSuccessResponse($place);
 		}
 		catch (BaseModuleException $e)
 		{
@@ -57,6 +57,9 @@ class getPlaceInfoModule
  */
 	function getPlaceSql($params = null)
 	{
+
+		var_dump($params);
+
 		// 抽出条件の設定
 // *** 条件を追加する時は、ここに項目を追加して下さい
 		$colArray = array(
@@ -93,7 +96,7 @@ class getPlaceInfoModule
 			$sqlStr .= " AND pe.type3 = ?";
 		}
 
-		$result = $this->api->getSelectData($sqlStr);
+		//$result = $this->api->getSelectData($sqlStr);
 
 		return $result;
 	}
@@ -106,8 +109,19 @@ class getPlaceInfoModule
 	}
 }
 
+$type = array();
+
+$type["type0"] = intval($_POST['type0']);
+$type["type1"] = intval($_POST['type1']);
+$type["type2"] = intval($_POST['type2']);
+$type["type3"] = intval($_POST['type3']);
+
+
+
+$apiKey = $_POST['apikey'];
+
 $module = new getPlaceInfoModule();
-$module->execute();
+$module->execute($type);
 header($module->api->apiHeaderInfo);
 print $module->api->apiBodyInfo;
 ?>
